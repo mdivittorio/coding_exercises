@@ -10,4 +10,5 @@ def main():
         evenity = 'even' if (value % 2) == 0 else 'odd'
         print(f'The number {value} is {evenity}.')
 
+
 main()
