@@ -61,3 +61,8 @@ class Deck:
 
 
 main()
+
+
+# need way to group all suited cards, all of a certain rank
+# abstract properties: excluded cards, excluded suits, excluded ranks
+# move Deck logic into subclass for standard deck
