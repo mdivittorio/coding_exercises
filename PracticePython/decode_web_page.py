@@ -10,7 +10,7 @@ def main():
 
 def get_list_articles(url: str):
     soup = BeautifulSoup(get_page_text(url), 'html.parser')
-    for title in soup.find_all('h2'):
+    for title in soup.find_all('h2'):   # TODO add CSS selector
         print(title.text)
 
 
