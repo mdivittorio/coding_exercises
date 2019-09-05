@@ -3,6 +3,19 @@ from coding_exercises.CodingInterview.utils import LinkedList
 
 
 class TestLinkedList(unittest.TestCase):
+    # find
+    def test_find_empty(self):
+        ll = LinkedList()
+        self.assertFalse(ll.find(1))
+
+    def test_find_missing_value(self):
+        ll = LinkedList.get_linked_list(1, 2, 3)
+        self.assertFalse(ll.find(4))
+
+    def test_find_matching_value(self):
+        ll = LinkedList.get_linked_list(1, 2, 3)
+        self.assertTrue(ll.find(2))
+
     # add
     def test_add_empty_length(self):
         ll = LinkedList()
@@ -56,9 +69,24 @@ class TestLinkedList(unittest.TestCase):
 
     # delete_value
     def test_delete_value_empty(self):
-        assert LinkedList().delete_val(0) is None
+        self.assertIsNone(LinkedList().delete_val(0))
 
     def test_delete_missing_value(self):
         ll = LinkedList.get_linked_list(1, 2, 3)
         ll.delete_val(4)
+        self.assertFalse(ll.find(4))
+
+    def test_delete_missing_length(self):
+        ll = LinkedList.get_linked_list(1, 2, 3)
+        ll.delete_val(4)
         self.assertEqual(len(ll), 3)
+
+    def test_delete_match_value(self):
+        ll = LinkedList.get_linked_list(1, 2, 3)
+        ll.delete_val(2)
+        self.assertFalse(ll.find(2))
+
+    def test_delete_match_length(self):
+        ll = LinkedList.get_linked_list(1, 2, 3)
+        ll.delete_val(2)
+        self.assertEqual(len(ll), 2)
