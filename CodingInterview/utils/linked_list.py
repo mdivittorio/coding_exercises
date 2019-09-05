@@ -73,13 +73,16 @@ class LinkedList:
                     current = current.next
 
     def delete_index(self, index):
-        if index == 0:
+        adj_index = index if index >= 0 else index + len(self)
+        if not self.head:
+            return
+        elif adj_index == 0:
             self.head = self.head.next
         else:
+            if adj_index > len(self) - 1:
+                raise IndexError(f'Index {index} is outside bounds of linked list.')
             current = self.head
-            for i in range(index-1):
-                if not current:
-                    raise IndexError(f'Index {index} is outside bounds of linked list.')
+            for i in range(adj_index-1):     # traverse to node behind one to be removed
                 current = current.next
             current.next = current.next.next
 
