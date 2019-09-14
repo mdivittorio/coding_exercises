@@ -1,3 +1,6 @@
+import math
+
+
 def main():
     sentence = 'My name is Michelle'
     print(reverse_words(sentence))
@@ -6,7 +9,9 @@ def main():
 
 def reverse_words(sentence: str):
     split = sentence.split()
-    split.reverse()
+    for index, _ in enumerate(range(math.floor(len(split)/2))):
+        split[index], split[-(index+1)] = split[-(index+1)], split[index]
+    #split.reverse()
     return split
 
 
