@@ -71,6 +71,11 @@ class TestLinkedList(unittest.TestCase):
     def test_delete_value_empty(self):
         self.assertIsNone(LinkedList().delete_val(0))
 
+    def test_delete_head(self):
+        ll = LinkedList.get_linked_list(1, 2, 3)
+        ll.delete_val(1)
+        self.assertTrue(ll.head.data == 2)
+
     def test_delete_missing_value(self):
         ll = LinkedList.get_linked_list(1, 2, 3)
         ll.delete_val(4)

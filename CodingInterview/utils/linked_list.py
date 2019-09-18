@@ -53,24 +53,18 @@ class LinkedList:
     def delete_val(self, val):
         if not self:
             return
-        follow = None
-        if not self.head.next:  # only one item in list
-            if self.head.data == val:
-                self.head = None
+        current = self.head
+        prev = None
+        while current:
+            if current.data == val:
+                if prev:
+                    prev.next = current.next
+                else:   # no previous node => matching head
+                    self.head = current.next
                 return
-        else:
-            # keep ref to previous node to update next pointer
-            current = self.head
-            while current:
-                if current.data == val:
-                    if current != self.head:
-                        follow.next = current.next
-                        current = follow.next
-                    else:
-                        self.head = current = current.next
-                else:
-                    follow = current
-                    current = current.next
+            else:
+                prev = current
+                current = current.next
 
     def delete_index(self, index):
         adj_index = index if index >= 0 else index + len(self)
